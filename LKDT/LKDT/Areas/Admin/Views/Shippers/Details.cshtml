@@ -1,0 +1,38 @@
+﻿@model LKDT.Models.Shipper
+
+@{
+    ViewData["Title"] = "Thông tin nhân viên giao hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+            <a asp-area="Admin" asp-controller="Shippers" asp-action="Index" class="breadcrumb-item">Danh sách nhân viên giao hàng</a>
+            <span class="breadcrumb-item active">Thông tin nhân viên giao hàng</span>
+        </nav>
+    </div>
+</div>
+
+<div class="card-body">
+    <h4 class="card-title">Thông tin nhân viên giao hàng</h4>
+    <div class="table-responsive">
+        <table class="product-info-table m-t-20">
+            <tbody>
+                <tr>
+                    <td>ID:</td>
+                    <td class="text-dark font-weight-semibold">@Model.MaShipper</td>
+                </tr>
+                <tr>
+                    <td>Tên quyền truy cập:</td>
+                    <td>@Model.TenShipper</td>
+                </tr>
+                <tr>
+                    <td>Mô tả:</td>
+                    <td>@Model.MoTa</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿@model LKDT.Models.DanhMuc
+@{
+    ViewData["Title"] = "Thông tin danh mục: " + Model.TenDm;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+            <a asp-area="Admin" asp-controller="DanhMucs" asp-action="Index" class="breadcrumb-item">Danh sách danh mục</a>
+            <span class="breadcrumb-item active">Thông tin danh mục : @Model.TenDm</span>
+        </nav>
+    </div>
+</div>
+<div class="page-header no-gutters has-tab">
+    <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+        <div class="media align-items-center m-b-15">
+            <div class="avatar avatar-image rounded" style="height: 70px; width:70px">
+                <img src="~/images/categorys/@Model.Avatar">
+            </div>
+            <div class="m-l-15">
+                <h4 class="m-b-0">@Model.TenDm</h4>
+                <p class="text-muted m-b-0">ID: #@Model.MaDm</p>
+            </div>
+        </div>
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#product-overview">Overview</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#product-images">Ảnh đại diện</a>
+        </li>
+    </ul>
+</div>
+<div class="container-fluid">
+    <div class="tab-content m-t-15">
+        <div class="tab-pane fade show active" id="product-overview">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">THÔNG TIN DANH MỤC: @Model.TenDm</h4>
+                    <div class="table-responsive">
+                        <table class="product-info-table m-t-20">
+                            <tbody>
+                                <tr>
+                                    <td>Tên danh mục:</td>
+                                    <td class="text-dark font-weight-semibold">@Model.TenDm</td>
+                                </tr>
+                                <tr>
+                                    <td>URL:</td>
+                                    <td class="text-dark font-weight-semibold">@Model.Url</td>
+                                </tr>
+                                <tr>
+                                    <td>Trạng thái:</td>
+                                    <td>
+                                        <div class="check-box">
+                                            <input asp-for="TrangThai" type="checkbox">
+                                            <label for="TrangThai">Public</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">THÔNG TIN MÔ TẢ</h4>
+                </div>
+                <div class="card-body">
+                    @Html.Raw(Model.MoTa)
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="product-images">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img class="img-fluid" src="~/images/categorys/@Model.Avatar" style="width: 400px; height: 300px"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

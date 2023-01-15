@@ -1,0 +1,88 @@
+﻿@model LKDT.Models.SanPham
+
+@{ ViewData["Title"] = "Thông tin sản phẩm" + Model.TenSp;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml"; }
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+            <a asp-area="Admin" asp-controller="SanPhams" asp-action="Index" class="breadcrumb-item">Danh sách sản phẩm</a>
+            <span class="breadcrumb-item active">Thông tin sản phẩm : @Model.TenSp</span>
+        </nav>
+    </div>
+</div>
+
+<div class="card-body">
+    <h4 class="card-title">Thông tin sản phẩm : @Model.TenSp</h4>
+    <div class="table-responsive">
+        <table class="product-info-table m-t-20">
+            <tbody>
+                <tr>
+                    <td>ID:</td>
+                    <td class="text-dark font-weight-semibold">@Model.MaSp</td>
+                </tr>
+                <tr>
+                    <td>Tên sản phẩm:</td>
+                    <td>@Model.TenSp</td>
+                </tr>
+                <tr>
+                    <td>URL:</td>
+                    <td>@Model.Url</td>
+                </tr>
+                <tr>
+                    <td>Mô tả ngắn:</td>
+                    <td>@Model.MotaNgan</td>
+                </tr>
+                <tr>
+                    <td>Giá:</td>
+                    <td>@Model.DonGia</td>
+                </tr>
+                <tr>
+                    <td>Trạng thái:</td>
+                    <td>
+                        @if (Model.TrangThai)
+                        {
+                            <div class="switch m-r-10">
+                                <input type="checkbox" id="switch-1" checked="" disabled />
+                                <label for="switch-1"></label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="switch m-r-10">
+                                <input type="checkbox" id="switch-1" disabled />
+                                <label for="switch-1"></label>
+                            </div>
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Danh mục:</td>
+                    <td>@Model.MaDmNavigation.TenDm</td>
+                </tr>
+                <tr>
+                    <td>Ngày tạo:</td>
+                    <td>@Model.NgayTao</td>
+                </tr>
+                <tr>
+                    <td>Ngày chỉnh sửa</td>
+                    <td>@Model.NgayChinhSua</td>
+                </tr>
+
+                <tr>
+                    <td>Ảnh đại diện:</td>
+                    <td>
+                        <img width="150" height="150" src="~/images/products/@Model.Avatar" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mô tả sản phẩm:</td>
+                    <td>@Model.MotaDai</td>
+                </tr>
+
+            </tbody>
+    </table>
+</div>
+</div>

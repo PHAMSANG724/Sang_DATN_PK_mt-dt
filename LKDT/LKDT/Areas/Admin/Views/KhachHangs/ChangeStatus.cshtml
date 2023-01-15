@@ -1,0 +1,66 @@
+﻿@model LKDT.Models.KhachHang
+
+
+<div class="modal-header">
+    <h5 class="modal-title">THÔNG TIN KHÁCH HÀNG</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">THÔNG TIN KHÁCH HÀNG #@Model.MaKh</h4>
+            <div class="table-responsive">
+                <table class="product-info-table m-t-20">
+                    <tbody>
+                        <tr>
+                            <td>ID khách hàng:</td>
+                            <td class="text-dark font-weight-semibold">@Model.MaKh</td>
+                        </tr>
+                        <tr>
+                            <td>Họ tên:</td>
+                            <td>@Model.HoTen</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>@Model.Email</td>
+                        </tr>
+                        <tr>
+                            <td>Số điện thoại:</td>
+                            <td>@Model.Sdt</td>
+                        </tr>
+                        <tr>
+                            <td>Địa chỉ:</td>
+                            <td>@Model.DiaChi</td>
+                        </tr>
+                        <tr>
+                            <td>Ngày tạo:</td>
+                            <td>@Model.NgayTao</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form asp-area="Admin" asp-controller="KhachHangs" asp-action="ChangeStatus" asp-route-id="@Model.MaKh" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MaKh" />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Chọn trạng thái đơn hàng</label>
+                            <select class="form-control" asp-for="TrangThai" asp-items="@ViewBag.TrangThai" required>
+                                <option value="0" disabled selected>Chọn trạng thái đơn hàng</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Lưu thay đổi</button>
+            </form>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,87 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<LKDT.Models.DonHang>
+@{ int CurrentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "Danh sách đơn hàng" + CurrentPage;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml"; }
+
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+            <span class="breadcrumb-item active">Danh sách đơn hàng : trang @CurrentPage</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover e-commerce-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Chủ đơn</th>
+                        <th>Ngày mua</th>
+                        <th>Tổng tiền</th>
+                        @*<th>Shipper</th>*@
+                        <th>Trạng thái</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>@item.MaDh</td>
+                                <td>@item.MaKhNavigation.HoTen</td>
+                                <td>@item.NgayMua</td>
+                                @*<td>@item.OrderDetails.Sum(x =>x.TotalMoney).Value.ToString("#,##0") VNĐ</td>*@
+                                <td>@item.TongTien.ToString("#,##0") VNĐ</td>
+                                @*<td>@item.MaShipperNavigation.TenShipper</td>*@               @*Lỗi NULL*@
+                                <td>@item.MaTrangThaiNavigation.TenTrangThai</td>
+
+
+
+                                <td>
+                                    <a class="btn btn-primary btn-tone m-r-5" asp-area="Admin" asp-controller="DonHangs" asp-action="Details" asp-route-id="@item.MaDh">Chi tiết</a>
+                                    <a class="btn btn-success btn-tone m-r-5" asp-area="Admin" asp-controller="DonHangs" asp-action="Edit" asp-route-id="@item.MaDh">Cập nhật đơn hàng</a>
+                                    <a class="btn btn-danger btn-tone m-r-5" asp-area="Admin" asp-controller="DonHangs" asp-action="Delete" asp-route-id="@item.MaDh" style="pointer-events: none">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+
+            </table>
+            <div aria-label="Page navigation example">
+                <ul class="pagination">
+                    <pager class="pager-container" list="@Model" asp-area="Admin" asp-controller="DonHangs" asp-action="Index" />
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-header" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $('#modal-header').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var url = button.attr("href");
+            var modal = $(this);
+            // note that this will replace the content of modal-content ever time the modal is opened
+            modal.find('.modal-content').load(url);
+        });
+    </script>
+
+}
+
+

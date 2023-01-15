@@ -1,0 +1,49 @@
+﻿@model LKDT.Models.TaiKhoan
+
+@{
+    ViewData["Title"] = "Thông tin Tài Khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+            <a asp-area="Admin" asp-controller="TaiKhoans" asp-action="Index" class="breadcrumb-item">Danh sách tài khoản</a>
+            <span class="breadcrumb-item active">Thông tin Tài Khoản</span>
+        </nav>
+    </div>
+</div>
+
+<div class="card-body">
+    <h4 class="card-title">Thông tin Tài Khoản</h4>
+    <div class="table-responsive">
+        <table class="product-info-table m-t-20">
+            <tbody>
+                <tr>
+                    <td>ID:</td>
+                    <td class="text-dark font-weight-semibold">@Model.MaTk</td>
+                </tr>
+                <tr>
+                    <td>Họ tên:</td>
+                    <td>@Model.HoTen</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại:</td>
+                    <td>@Model.Sdt</td>
+                </tr>
+                <tr>
+                    <td>Lần đăng nhập cuối:</td>
+                    <td>@Model.DangnhapCuoi</td>
+                </tr>
+                <tr>
+                    <td>Quyền truy cập:</td>
+                    <td>@Model.MaQuyenNavigation.TenQuyen</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

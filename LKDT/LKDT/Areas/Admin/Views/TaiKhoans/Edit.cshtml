@@ -1,0 +1,61 @@
+﻿@model LKDT.Models.TaiKhoan
+
+@{
+    ViewData["Title"] = "Sửa thông tin tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+            <a asp-area="Admin" asp-controller="TaiKhoans" asp-action="Index" class="breadcrumb-item">Danh sách tài khoản</a>
+            <span class="breadcrumb-item active">CHỈNH SỬA: @Model.HoTen</span>
+        </nav>
+    </div>
+</div>
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="MaTk" />
+    <input type="hidden" asp-for="MaQuyen" />
+    <input type="hidden" asp-for="DangnhapCuoi" />
+    <input type="hidden" asp-for="NgayTao" />
+    <input type="hidden" asp-for="Email" />
+
+    <div class="tab-pane fade show active" id="product-edit-basic">
+        <div class="card">
+            <div class="card-body">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label class="font-weight-semibold" for="productName">Họ tên</label>
+                    <input type="text" class="form-control" asp-for="HoTen">
+                </div>
+                <div class="form-group">
+                    <label class="font-weight-semibold" for="productName">Số điện thoại</label>
+                    <input type="text" class="form-control" asp-for="Sdt">
+                </div>
+                <div class="form-group">
+                    <label class="font-weight-semibold" for="productName">Mật khẩu(Bỏ qua trường này nếu bạn không muốn thay đổi mật khẩu)</label>
+                    <input type="text" class="form-control" asp-for="MatKhau">
+                </div>
+                <div class="row">
+                    <div class="m-t-25">
+                        <div class="form-group d-flex align-items-center">
+                            <div class="switch m-r-10">
+                                <input type="checkbox" asp-for="TrangThai" checked="">
+                                <label for="TrangThai"></label>
+                            </div>
+                            <label>Hoạt động</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Lưu thay đổi" class="btn btn-primary" />
+    </div>
+</form>
+
+
+

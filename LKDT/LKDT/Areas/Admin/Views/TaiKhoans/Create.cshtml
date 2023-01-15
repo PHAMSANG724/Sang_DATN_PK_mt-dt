@@ -1,0 +1,57 @@
+﻿@model LKDT.Models.TaiKhoan
+
+@{
+    ViewData["Title"] = "Tạo mới tài khoản quản trị";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card-body">
+    <h4>Tạo mới tài khoản quản trị</h4>
+    <div class="m-t-25" style="max-width: 700px">
+        <form asp-controller="TaiKhoans" asp-action="Create" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Họ và tên</label>
+                    <input type="text" class="form-control" asp-for="HoTen" placeholder="Họ và tên">
+                    <span asp-validation-for="HoTen" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Số điện thoại</label>
+                    <input type="text" class="form-control" asp-for="Sdt" placeholder="Số điện thoại">
+                    <span asp-validation-for="Sdt" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="text" class="form-control" asp-for="Email" placeholder="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Mật khẩu</label>
+                    <input type="text" class="form-control" asp-for="MatKhau" placeholder="Mật khẩu">
+                    <span asp-validation-for="MatKhau" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Quyền truy cập</label>
+                    <select class="form-control" asp-for="MaQuyen" asp-items="@ViewBag.QuyenTruyCap" required>
+                        <option value="0" disabled selected>Chọn quyền truy cập</option>
+                    </select>
+                    <span asp-validation-for="MaQuyen" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox">
+                    <input asp-for="TrangThai" type="checkbox">
+                    <label for="TrangThai">Active</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Tạo mới</button>
+        </form>
+    </div>
+
+</div>
